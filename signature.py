@@ -66,16 +66,26 @@ class Signature(metaclass=PoolMeta):
         return response[0]['id']
 
     @classmethod
+    def cryptolog_validate_electronic_identity(cls, response):
+        return response[0]['id']
+
+    @classmethod
     def cryptolog_get_methods(cls):
         return {
             'init_signature': 'requester.requestTransaction',
             'check_status': 'requester.getTransactionInfo',
             'get_signed_document': 'requester.getDocuments',
+            'validate_electronic_identity': 'requester.requestRegistration',
+            'validate_id': 'validator.validate',
             }
 
     @classmethod
     def cryptolog_get_status_from_response(cls, response):
         return response[0]['status']
+
+    @classmethod
+    def cryptolog_get_transaction_info_from_response(cls, response):
+        return response[0]
 
     @classmethod
     def cryptolog_get_content_from_response(cls, response):
