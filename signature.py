@@ -77,6 +77,7 @@ class Signature(metaclass=PoolMeta):
             'get_signed_document': 'requester.getDocuments',
             'validate_electronic_identity': 'requester.requestRegistration',
             'validate_id': 'validator.validate',
+            'check_match_account': 'matcher.matchAccount',
             }
 
     @classmethod
