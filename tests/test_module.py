@@ -108,7 +108,8 @@ class ElectronicSignatureTestCase(ModuleTestCase):
     def test001_cni_OK(self):
         self._init_all()
         with Transaction().set_context(company=self.company):
-            res = self.signature.validate_electronic_identity(self.subscriber,
+            res = self.signature.validate_electronic_identity(
+                self.signature.provider_credential, self.subscriber,
                 self.id_docs, self.id_type)
             self.assertEqual(res, 1)
 
@@ -117,7 +118,8 @@ class ElectronicSignatureTestCase(ModuleTestCase):
         self._init_all()
         self.subscriber.first_name = 'Bad firstname'
         with Transaction().set_context(company=self.company):
-            res = self.signature.validate_electronic_identity(self.subscriber,
+            res = self.signature.validate_electronic_identity(
+                self.signature.provider_credential, self.subscriber,
                 self.id_docs, self.id_type)
             self.assertEqual(res, 2)
 
@@ -126,7 +128,8 @@ class ElectronicSignatureTestCase(ModuleTestCase):
         self._init_all()
         self.subscriber.birth_date = datetime.datetime(1966, 12, 6, 8, 5)
         with Transaction().set_context(company=self.company):
-            res = self.signature.validate_electronic_identity(self.subscriber,
+            res = self.signature.validate_electronic_identity(
+                self.signature.provider_credential, self.subscriber,
                 self.id_docs, self.id_type)
             self.assertEqual(res, 2)
 
@@ -136,7 +139,8 @@ class ElectronicSignatureTestCase(ModuleTestCase):
         self.id_docs = self._init_id_docs(id_docs_path=('CNI2-RECTO.jpg',
             'CNI-FR-TEST-RECTO.jpg'))
         with Transaction().set_context(company=self.company):
-            res = self.signature.validate_electronic_identity(self.subscriber,
+            res = self.signature.validate_electronic_identity(
+                self.signature.provider_credential, self.subscriber,
                 self.id_docs, self.id_type)
             self.assertEqual(res, 2)
 
