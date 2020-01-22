@@ -79,6 +79,14 @@ class Signature(metaclass=PoolMeta):
             'validate_id': 'validator.validate',
             'check_match_account': 'matcher.matchAccount',
             }
+        # return {
+        #     'init_signature': ('requester.requestTransaction', 'sign/rpc/'),
+        #     'check_status': ('requester.getTransactionInfo', 'sign/rpc/'),
+        #     'get_signed_document': ('requester.getDocuments', 'sign/rpc/'),
+        #     'validate_electronic_identity': ('requester.requestRegistration', 'sign/rpc/'),
+        #     'validate_id': ('validator.validate', 'ra/rpc/'),
+        #     'check_match_account': ('matcher.matchAccount', 'ra/rpc/'),
+        #     }
 
     @classmethod
     def cryptolog_get_status_from_response(cls, response):

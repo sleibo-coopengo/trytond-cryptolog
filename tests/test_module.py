@@ -46,7 +46,6 @@ class ElectronicSignatureTestCase(ModuleTestCase):
                                 'type': 'email',
                                 'value': 'corinne.bertier@coopengo.com',
                                 }])
-
         return subscriber
 
     def _init_company(self):
