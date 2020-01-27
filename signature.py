@@ -66,19 +66,7 @@ class Signature(metaclass=PoolMeta):
         return response[0]['id']
 
     @classmethod
-    def cryptolog_validate_electronic_identity(cls, response):
-        return response[0]['id']
-
-    @classmethod
     def cryptolog_get_methods(cls):
-        # return {
-        #     'init_signature': 'requester.requestTransaction',
-        #     'check_status': 'requester.getTransactionInfo',
-        #     'get_signed_document': 'requester.getDocuments',
-        #     'validate_electronic_identity': 'requester.requestRegistration',
-        #     'validate_id': 'validator.validate',
-        #     'check_match_account': 'matcher.matchAccount',
-        #     }
         return {
             'init_signature': ('requester.requestTransaction', 'sign/rpc/'),
             'check_status': ('requester.getTransactionInfo', 'sign/rpc/'),
@@ -128,6 +116,14 @@ class Signature(metaclass=PoolMeta):
             '3': 'canceled',
             '4': 'failed',
             '5': 'pending_validation',
+            }
+
+    @classmethod
+    def cryptolog_validation_result_code_status(cls):
+        return {
+            '0': 'pending_validation',
+            '1': 'valid',
+            '2': 'invalid',
             }
 
 
